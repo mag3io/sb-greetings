@@ -23,7 +23,7 @@ paths:
       - name: "name"
         in: "query"
         description: "Name to greet"
-        required: true
+        required: false
         type: "string"
         format: "string"
       responses:
