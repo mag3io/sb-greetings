@@ -4,3 +4,4 @@ Add a linter
 logging
 continuous integration
 packaging
+return real json

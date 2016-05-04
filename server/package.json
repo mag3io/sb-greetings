@@ -2,7 +2,7 @@
   "name": "greetings-api",
   "version": "1.0.0",
   "description": "Just testing",
-  "main": "app/index.js",
+  "main": "index.js",
   "keywords": [
     "swagger"
   ],

@@ -9,7 +9,7 @@ exports.greetingsGET = function (args, res, next) {
      * name (String)
      **/
 
-    console.log(args.name);
+    console.log(args);
 
     var examples = {};
     //var name = args.name.value || "World";
