@@ -32,7 +32,7 @@ paths:
           schema:
             type: "object"
             properties: {}
-      x-swagger-router-controller: "Default"
+      x-swagger-router-controller: "GreetingsController"
 definitions:
   GreetingResponse:
     type: "object"

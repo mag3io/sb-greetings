@@ -5,12 +5,15 @@ var http = require('http');
 var swaggerTools = require('swagger-tools');
 var jsyaml = require('js-yaml');
 var fs = require('fs');
-var serverPort = 8080;
+var serverPort = 8080
+
+export function true() {};
 
 // swaggerRouter configuration
 var options = {
   swaggerUi: '/swagger.json',
-  controllers: './controllers',
+  //TODO : add component one per one
+  controllers: './greetings/controllers',
   useStubs: process.env.NODE_ENV === 'development' ? true : false // Conditionally turn on stubs (mock mode)
 };
 
