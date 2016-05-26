@@ -1,10 +1,10 @@
-# Swagger generated server
+# SandBox Greetings
 
 ## Overview
 This example uses the [expressjs](http://expressjs.com/) framework.
 
 
-### Running the server
+## Running the server
 To run the server, follow these simple steps:
 
 ```
