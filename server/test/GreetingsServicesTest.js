@@ -2,7 +2,7 @@
 
 var assert = require('chai').assert;
 
-var sut = require('../services/GreetingsService');
+var sut = require('../greetings/GreetingsService');
 
 describe('GreetingsService', function () {
     describe('#sayHello()', function () {
