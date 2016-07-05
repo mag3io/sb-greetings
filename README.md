@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mag3io/sb-greetings.svg?branch=master)](https://travis-ci.org/mag3io/sb-greetings)
+
 # SandBox Greetings
 
 ## Overview
