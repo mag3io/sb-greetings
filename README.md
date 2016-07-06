@@ -34,3 +34,20 @@ GET http://localhost:3000/greetings/hello?name=
 ```
 GET http://localhost:3000/greetings/bye?name=
 ```
+
+## Travis integration :
+
+Travis integration is enabled through "Repo/Settings/Webhooks & services"
+
+On Travis side repo hook should be as well [enabled](https://travis-ci.org/profile/oleg-korolenko).
+
+.travis.yml contains all commands that Travis need to execute launch a build ([docs on NodeJS integration](https://docs.travis-ci.com/user/languages/javascript-with-nodejs/))
+
+Build details and logs can be checked on [Travis website](https://travis-ci.org/mag3io/sb-greetings/builds)
+
+According to default configuration every push on every branch will trigger a build (pull requests merge as well).
+
+Repo README.md contains a link to the latest build status which si shown as an icon:
+ ```
+ [![Build Status](https://travis-ci.org/mag3io/sb-greetings.svg?branch=master)](https://travis-ci.org/mag3io/sb-greetings)
+ ```
