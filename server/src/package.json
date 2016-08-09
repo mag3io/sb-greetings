@@ -9,7 +9,9 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "bunyan": "^1.8.1",
+    "bunyan-request-logger": "^1.1.0"
   },
   "scripts": {
     "start": "nodemon index.js",
