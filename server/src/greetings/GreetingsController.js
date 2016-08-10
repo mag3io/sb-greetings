@@ -2,7 +2,7 @@
 
 const router = require('express').Router(),
   greetings = require('./GreetingsService'),
-  log = require('../common/Logging.js').createLogger('GreetingsController');
+  log = require('../common/Logging.js').childRequestLog(__filename);
 
 router.get('/hello', (req, res) => {
   log(req).info('Getting "/Hello"');
