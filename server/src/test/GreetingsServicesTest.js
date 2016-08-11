@@ -1,12 +1,12 @@
 'use strict';
 
+var mocha = require('mocha'),
+describe = mocha.describe,
+it = mocha.it;
+
 var assert = require('chai').assert;
 
 var sut = require('../greetings/GreetingsService');
-
-var mocha = require('mocha'),
-describe = mocha.describe,
-id = mocha.it;
 
 describe('GreetingsService', function () {
     describe('#sayHello()', function () {
