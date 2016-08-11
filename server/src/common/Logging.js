@@ -13,16 +13,17 @@ module.exports = {
 
   errorLogger: bunyan_request_log.errorLogger,
 
-  childLog: (filename) => {
+  domainLog: (filename) => {
     const name = path.basename(filename, '.js');
-    return bunyan_log.child({module: name});
+    return bunyan_log.child({layer: 'DOMAIN', module: name});
   },
 
-  childRequestLog: (filename) => {
+  controllerLog: (filename) => {
     return (req) => {
       if (!req) {throw new Error('"request" is required')}
       const name = path.basename(filename, '.js');
       return bunyan_log.child({
+        layer: 'CONTROLLER',
         module: name,
         requestId: req.requestId
       })

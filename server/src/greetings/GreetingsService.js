@@ -1,6 +1,6 @@
 'use strict';
 
-const log = require('../common/Logging.js').childLog(__filename);
+const log = require('../common/Logging.js').domainLog(__filename);
 
 exports.sayBye = (name) => {
     log.info({param: name});
