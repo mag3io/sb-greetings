@@ -7,6 +7,7 @@ const app = require('express')(),
 const logging = require('./common/Logging.js'),
   log = logging.log;
 app.use(logging.requestLogger());
+app.use(logging.domainMiddleware());
 
 // -- Configure the endpoints
 const greetingsController = require('./greetings/GreetingsController.js');

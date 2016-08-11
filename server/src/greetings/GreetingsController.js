@@ -5,7 +5,7 @@ const router = require('express').Router(),
   log = require('../common/Logging.js').controllerLog(__filename);
 
 router.get('/hello', (req, res) => {
-  log(req).info('Getting "/Hello"');
+  log().info('Getting "/Hello"');
   res.setHeader('Content-Type', 'application/json');
   res.end(JSON.stringify({
     messages: greetings.sayHello(req.query.name),

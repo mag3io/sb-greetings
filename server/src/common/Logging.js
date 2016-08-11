@@ -3,30 +3,48 @@ const logSettings = { name: 'GreetingsApp' },
   bunyan_log = bunyan.createLogger(Object.assign(logSettings, {level: 'DEBUG'})),
   bunyan_request = require('bunyan-request-logger'),
   bunyan_request_log = bunyan_request(logSettings),
-  path = require('path');
+  path = require('path'),
+  domain = require('domain'),
+  process = require('process');
+
+logger = (layer) => {
+    return (filename) => {
+      return () => {
+        const name = path.basename(filename, '.js');
+        return bunyan_log.child({
+          requestId: process.domain._req && process.domain._req.requestId,
+          layer: layer,
+          module: name
+        })
+      }
+    }
+  };
+
+domainMiddleware = () => {
+    return function domainMiddleware(req, res, next) {
+      const reqDomain = domain.create();
+      reqDomain._req = req;
+      reqDomain.add(req);
+      reqDomain.add(res);
+      reqDomain.run(next);
+      reqDomain.on('error', function (err) {
+        reqDomain.dispose(); // Once a domain is disposed, further errors from the emitters in that set will be ignored.
+        next(err);
+      });
+      res.on('close', function () {
+        reqDomain.dispose();
+      });
+      res.on('finish', function () {
+        reqDomain.dispose();
+      });
+    }
+  };
 
 module.exports = {
-
   log: bunyan_log,
-
+  domainLog: logger('DOMAIN'),
+  controllerLog: logger('CONTROLLER'),
   requestLogger: bunyan_request_log.requestLogger,
-
   errorLogger: bunyan_request_log.errorLogger,
-
-  domainLog: (filename) => {
-    const name = path.basename(filename, '.js');
-    return bunyan_log.child({layer: 'DOMAIN', module: name});
-  },
-
-  controllerLog: (filename) => {
-    return (req) => {
-      if (!req) {throw new Error('"request" is required')}
-      const name = path.basename(filename, '.js');
-      return bunyan_log.child({
-        layer: 'CONTROLLER',
-        module: name,
-        requestId: req.requestId
-      })
-    }
-  }
+  domainMiddleware: domainMiddleware
 };
