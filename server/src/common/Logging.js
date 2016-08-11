@@ -15,9 +15,9 @@ logger = (layer) => {
           requestId: process.domain && process.domain._req && process.domain._req.requestId || 'none',
           layer: layer,
           module: name
-        })
-      }
-    }
+        });
+      };
+    };
   };
 
 domainMiddleware = () => {
@@ -37,7 +37,7 @@ domainMiddleware = () => {
       res.on('finish', function () {
         reqDomain.dispose();
       });
-    }
+    };
   };
 
 module.exports = {
