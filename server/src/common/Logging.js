@@ -12,7 +12,7 @@ logger = (layer) => {
       return () => {
         const name = path.basename(filename, '.js');
         return bunyan_log.child({
-          requestId: process.domain._req && process.domain._req.requestId,
+          requestId: process.domain && process.domain._req && process.domain._req.requestId || 'none',
           layer: layer,
           module: name
         })
