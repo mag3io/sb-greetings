@@ -1,16 +1,15 @@
 'use strict';
 
-const express = require('express');
-const router = express.Router();
-
-const greetings = require('./GreetingsService');
+const router = require('express').Router(),
+  greetings = require('./GreetingsService'),
+  log = require('../common/Logging.js').controllerLog(__filename);
 
 router.get('/hello', (req, res) => {
+  log().info('Getting "/Hello"');
   res.setHeader('Content-Type', 'application/json');
   res.end(JSON.stringify({
     messages: greetings.sayHello(req.query.name),
     when: new Date()
-
   }, null, 2));
 });
 
@@ -19,7 +18,6 @@ router.get('/bye', (req, res) => {
   res.end(JSON.stringify({
     messages: greetings.sayBye(req.query.name),
     when: new Date()
-
   }, null, 2));
 });
 

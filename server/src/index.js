@@ -1,12 +1,23 @@
-const express = require('express');
-const app = express();
+// -- Create the application
+const app = require('express')(),
+  env = process.env,
+  port = env.myapp_port || 3000;
 
-const logConfig = require('./common/LogConfig.js');
+// -- Configure the log
+require('./common/ProcessEnv').builkSafeSet({'LOG_LEVEL': 'DEBUG'});
+const logging = require('./common/Logging.js'),
+  log = logging.log;
+app.use(logging.requestLogger());
+app.use(logging.domainMiddleware());
+
+// -- Configure the endpoints
 const greetingsController = require('./greetings/GreetingsController.js');
-
-app.use(logConfig);
 app.use('/greetings', greetingsController);
 
-app.listen(3000, () => {
-  console.log('Example app listening on port 3000!');
+// -- Configure error logging has to be put after routing.
+app.use(logging.errorLogger);
+
+// Start the application
+app.listen(port, () => {
+  log.info("App started and listening on port", port);
 });

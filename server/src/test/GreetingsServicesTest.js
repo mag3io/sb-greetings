@@ -1,8 +1,14 @@
 'use strict';
 
-var assert = require('chai').assert;
+require('../common/ProcessEnv').safeSet('LOG_LEVEL', 'ERROR');
 
-var sut = require('../greetings/GreetingsService');
+const mocha = require('mocha'),
+    describe = mocha.describe,
+    it = mocha.it;
+
+const assert = require('chai').assert;
+
+const sut = require('../greetings/GreetingsService');
 
 describe('GreetingsService', function () {
     describe('#sayHello()', function () {
@@ -14,5 +20,5 @@ describe('GreetingsService', function () {
             var name = 'Richard';
             assert.equal('Hello Richard', sut.sayHello(name));
         });
-    })
+    });
 });
