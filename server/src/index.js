@@ -4,6 +4,7 @@ const app = require('express')(),
   port = env.myapp_port || 3000;
 
 // -- Configure the log
+require('./common/ProcessEnv').builkSafeSet({'LOG_LEVEL': 'DEBUG'});
 const logging = require('./common/Logging.js'),
   log = logging.log;
 app.use(logging.requestLogger());

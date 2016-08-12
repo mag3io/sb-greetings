@@ -1,12 +1,14 @@
 'use strict';
 
-var mocha = require('mocha'),
-describe = mocha.describe,
-it = mocha.it;
+require('../common/ProcessEnv').safeSet('LOG_LEVEL', 'ERROR');
 
-var assert = require('chai').assert;
+const mocha = require('mocha'),
+    describe = mocha.describe,
+    it = mocha.it;
 
-var sut = require('../greetings/GreetingsService');
+const assert = require('chai').assert;
+
+const sut = require('../greetings/GreetingsService');
 
 describe('GreetingsService', function () {
     describe('#sayHello()', function () {

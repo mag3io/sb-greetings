@@ -1,11 +1,12 @@
-const logSettings = { name: 'GreetingsApp' },
+const logLevel = require('./ProcessEnv').safeGet('LOG_LEVEL', 'DEBUG');
+
+const logSettings = { name: 'GreetingsApp', level: logLevel },
   bunyan = require('bunyan'),
-  bunyan_log = bunyan.createLogger(Object.assign(logSettings, {level: 'DEBUG'})),
+  bunyan_log = bunyan.createLogger(logSettings),
   bunyan_request = require('bunyan-request-logger'),
   bunyan_request_log = bunyan_request(logSettings),
   path = require('path'),
-  domain = require('domain'),
-  process = require('process');
+  domain = require('domain');
 
 logger = (layer) => {
     return (filename) => {
