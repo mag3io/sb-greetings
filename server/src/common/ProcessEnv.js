@@ -8,12 +8,12 @@ let safeSet = (key, value) => {
     process.env[key] = process.env[key] || value;
 };
 
-let builkSafeSet = (envs) => {
+let builkSet = (envs) => {
     Object.keys(envs).forEach((key) => { process.env[key] = envs[key]; });
 };
 
 module.exports = {
-    builkSafeSet: builkSafeSet,
+    builkSet: builkSet,
     safeGet: safeGet,
     safeSet: safeSet
 };
