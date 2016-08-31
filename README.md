@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/mag3io/sb-greetings.svg?branch=master)](https://travis-ci.org/mag3io/sb-greetings)
 [![bitHound Overall Score](https://www.bithound.io/github/mag3io/sb-greetings/badges/score.svg)](https://www.bithound.io/github/mag3io/sb-greetings)
+[![Coverage Status](https://coveralls.io/repos/github/mag3io/sb-greetings/badge.svg?branch=master)](https://coveralls.io/github/mag3io/sb-greetings?branch=master)
 # SandBox Greetings
 
 ## Overview
