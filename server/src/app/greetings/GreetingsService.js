@@ -7,7 +7,7 @@ const say = (what) => {
         log().info({ param: name });
         return what + " " + (name || "World");
     };
-}
+};
 
 exports.sayBye = say("Bye");
 

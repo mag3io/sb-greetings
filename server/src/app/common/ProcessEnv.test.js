@@ -21,11 +21,11 @@ describe('ProcessEnv', function () {
     describe('#safeSet()', function () {
         it('should not set process.env variable if that later is already set.', function () {
             process.env.foo = 'bar';
-            sut.safeSet('foo','john')
+            sut.safeSet('foo','john');
             assert.equal(process.env.foo, 'bar');
         });
         it('should set process.env variable.', function () {
-            sut.safeSet('foo','bar')
+            sut.safeSet('foo','bar');
             assert.equal(process.env.foo, 'bar');
         });
     });
