@@ -1,14 +1,14 @@
 'use strict';
 
-const process = require('process'),
-    log = require('../common/Logging.js').domainLog(__filename);
+const log = require('../common/Logging.js').domainLog(__filename);
 
-exports.sayBye = (name) => {
-    log().info({ param: name });
-    return "Bye " + (name || "World");
+const say = (what) => {
+    return (name) => {
+        log().info({ param: name });
+        return what + " " + (name || "World");
+    };
 };
 
-exports.sayHello = (name) => {
-    log().debug({ param: name });
-    return "Hello " + (name || "World");
-};
+exports.sayBye = say("Bye");
+
+exports.sayHello = say("Hello");

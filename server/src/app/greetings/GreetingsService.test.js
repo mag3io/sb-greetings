@@ -1,16 +1,9 @@
 'use strict';
 
-require('../common/ProcessEnv').safeSet('LOG_LEVEL', 'ERROR');
-
-const mocha = require('mocha'),
-    describe = mocha.describe,
-    it = mocha.it;
-
-const assert = require('chai').assert;
-
-const sut = require('../greetings/GreetingsService');
+const sut = require('./GreetingsService');
 
 describe('GreetingsService', function () {
+    
     describe('#sayHello()', function () {
         it('should return "Hello World" if the parameter name is "undefined"', function () {
             var name;
@@ -21,4 +14,16 @@ describe('GreetingsService', function () {
             assert.equal('Hello Richard', sut.sayHello(name));
         });
     });
+
+    describe('#sayBye()', function () {
+        it('should return "Bye World" if the parameter name is "undefined"', function () {
+            var name;
+            assert.equal('Bye World', sut.sayBye(name));
+        });
+        it('should return "Bye Richard" if the parameter name is "Richard"', function () {
+            var name = 'Richard';
+            assert.equal('Bye Richard', sut.sayBye(name));
+        });
+    });
+
 });
