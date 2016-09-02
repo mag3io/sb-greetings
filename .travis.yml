@@ -1,5 +1,15 @@
+sudo: required
+
 language: node_js
+
 node_js:
   - "6.1"
+
+services:
+  - docker
+
 script:
-    - cd server/src && npm install && npm run-script test_exporting_coverage
+  - cd server/src && npm install && npm run-script test_exporting_coverage
+
+after_script:
+  - docker build -t sb-greetings server/.
