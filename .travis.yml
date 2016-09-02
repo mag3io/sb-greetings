@@ -9,7 +9,12 @@ services:
   - docker
 
 script:
-  - cd server/src && npm install && npm run-script test_exporting_coverage
+  - cd server/src 
+  - npm install && npm run-script test_exporting_coverage
+  - cd ../..
 
 after_script:
   - docker build -t sb-greetings server/.
+
+after-success:
+
