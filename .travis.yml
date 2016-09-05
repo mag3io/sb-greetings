@@ -17,7 +17,8 @@ after_script:
   - docker build -t mag3io/sb-greetings server/.
 
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker push mag3io/sb-greetings;
-    fi
+  # - if [ "$TRAVIS_BRANCH" == "master" ]; then
+  #   docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  #   docker push mag3io/sb-greetings;
+  #   fi
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push mag3io/sb-greetings
