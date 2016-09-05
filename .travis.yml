@@ -12,8 +12,6 @@ script:
   - cd server/src 
   - npm install && npm run-script test_exporting_coverage
   - cd ../..
-
-after_script:
   - docker build -t mag3io/sb-greetings server/.
 
 after_success:
