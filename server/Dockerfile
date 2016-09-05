@@ -1,4 +1,4 @@
-FROM mag3io/node-docker-auto
+FROM mag3io/node
 
 RUN mkdir src
 WORKDIR src
