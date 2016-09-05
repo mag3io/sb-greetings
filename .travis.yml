@@ -5,11 +5,10 @@ node_js:
 services:
 - docker
 script:
-- cd server/src
-- npm install && npm run-script test_exporting_coverage
-- cd ../..
-after_script:
-- docker build -t mag3io/sb-greetings server/.
+  - cd server/src 
+  - npm install && npm run-script test_exporting_coverage
+  - cd ../..
+  - docker build -t mag3io/sb-greetings server/.
 after_success:
 - if [ "$TRAVIS_BRANCH" == "master" ]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
   docker push mag3io/sb-greetings; fi
