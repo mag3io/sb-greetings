@@ -1,4 +1,4 @@
-FROM mag3io/node-docker-auto
+FROM mag3io/node
 
 RUN mkdir src
 WORKDIR src
@@ -8,4 +8,4 @@ RUN npm install
 
 EXPOSE 3000
 
-CMD ["index.js"]
+CMD ["app/index.js"]
