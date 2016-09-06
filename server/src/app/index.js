@@ -38,10 +38,10 @@ const stopServer = (server) => {
       console.log("Force shutdown.");
       process.exit(1);
     }, 4000);
-  }
+  };
 };
 
 module.exports = {
   name: appName,
   start: start
-}
+};
