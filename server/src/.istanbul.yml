@@ -1,6 +1,6 @@
 # just run ./node_modules/.bin/istanbul help config to see all options
 instrumentation:
-    excludes: ['app/index.js', '**/*.spec.js']
+    excludes: ['app/index.js', '**/*.test.js']
     include-all-sources: true
 reporting:
     print: none
