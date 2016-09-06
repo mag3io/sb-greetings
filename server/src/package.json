@@ -4,17 +4,21 @@
   "description": "Just testing",
   "main": "app/index.js",
   "keywords": [
-    "express"
+    "express", 
+    "sandbox"
   ],
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "express": "^4.13.4",
     "bunyan": "^1.8.1",
-    "bunyan-request-logger": "^1.1.0"
+    "bunyan-request-logger": "^1.1.0",
+    "commander": "^2.9.0",
+    "express": "^4.13.4"
   },
   "scripts": {
-    "start": "nodemon app/index.js",
+    "start": "node index.js start",
+    "start:dev": "nodemon index.js start | bunyan -o short",
+    "stop": "node index.js stop",
     "test": "rm -rf ./coverage && istanbul cover _mocha -- -r test/index.js app/**/*.test.js",
     "test_exporting_coverage": "rm -rf ./coverage && istanbul cover --report lcovonly _mocha -- -r test/index.js app/**/*.test.js && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
