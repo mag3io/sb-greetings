@@ -1,9 +1,14 @@
+Build:
 [![Travis Build Status](https://travis-ci.org/mag3io/sb-greetings.svg?branch=master)](https://travis-ci.org/mag3io/sb-greetings)
 [![Codeship Status for mag3io/sb-greetings](https://codeship.com/projects/ee5130a0-51b8-0134-332a-1ab2f5cbd726/status?branch=master)](https://codeship.com/projects/171313)
 
+Code Quality:
 [![bitHound Overall Score](https://www.bithound.io/github/mag3io/sb-greetings/badges/score.svg)](https://www.bithound.io/github/mag3io/sb-greetings)
 [![Coverage Status](https://coveralls.io/repos/github/mag3io/sb-greetings/badge.svg?branch=master)](https://coveralls.io/github/mag3io/sb-greetings?branch=master)
 
+Docker:
+[![](https://images.microbadger.com/badges/version/mag3io/sb-greetings.svg)](http://microbadger.com/images/mag3io/sb-greetings "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/mag3io/sb-greetings.svg)](http://microbadger.com/images/mag3io/sb-greetings "Get your own image badge on microbadger.com")
 
 # SandBox Greetings
 
