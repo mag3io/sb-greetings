@@ -5,7 +5,6 @@ const app = require('express')(),
   appName = env.app_name || require('../package.json').name;
 
 // -- Configure the log
-require('./common/ProcessEnv').builkSet({ 'LOG_LEVEL': 'DEBUG' });
 const logging = require('./common/Logging.js'),
   log = logging.log;
 app.use(logging.requestLogger());
@@ -42,6 +41,7 @@ const stopServer = (server) => {
 };
 
 module.exports = {
+  app: app,
   name: appName,
   start: start
 };
