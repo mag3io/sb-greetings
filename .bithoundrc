@@ -1,6 +1,7 @@
 {
     "ignore": [
         "**/node_modules/**",
+        "**/test/**",
         "**/*.test.js"
     ],
     "packageJsonLocation": "server/src/package.json"
