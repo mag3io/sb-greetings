@@ -20,7 +20,7 @@
     "start:dev": "LOG_LEVEL=DEBUG nodemon index.js start | bunyan -o short",
     "stop": "node index.js stop",
     "test": "rm -rf ./coverage && istanbul cover _mocha -- -r test/index.js app/**/*.test.js",
-    "test:e2e": "LOG_LEVEL=ERROR mocha test/e2e/*.spec.js",
+    "test:e2e": "LOG_LEVEL=ERROR mocha --delay -r test/e2e/index.js test/e2e/*.spec.js",
     "test_exporting_coverage": "rm -rf ./coverage && istanbul cover --report lcovonly _mocha -- -r test/index.js app/**/*.test.js && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
   "devDependencies": {
