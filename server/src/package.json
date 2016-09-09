@@ -16,6 +16,7 @@
     "express": "^4.13.4"
   },
   "scripts": {
+    "lint": "eslint .; exit 0",
     "start": "node index.js start",
     "start:dev": "LOG_LEVEL=DEBUG nodemon index.js start | bunyan -o short",
     "stop": "node index.js stop",
@@ -28,6 +29,10 @@
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "coveralls": "^2.11.12",
+    "eslint": "^3.4.0",
+    "eslint-config-standard": "^6.0.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.0.2"
   }

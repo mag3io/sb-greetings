@@ -20,7 +20,7 @@ app.use(logging.errorLogger);
 const start = () => {
   process.title = appName;
   const stop = stopServer(app.listen(port, () => {
-    log.info("App started and listening on port", port);
+    log.info('App started and listening on port', port);
   }));
   process.on('SIGTERM', stop);
   return stop;
@@ -28,13 +28,12 @@ const start = () => {
 
 const stopServer = (server) => {
   return () => {
-    log.info("Try to gracefully shutdown.");
+    log.info('Try to gracefully shutdown.');
     server.close(() => {
-      log.info("App closed.");
+      log.info('App closed.');
       process.exit(0);
     });
     setTimeout(() => {
-      console.log("Force shutdown.");
       process.exit(1);
     }, 4000);
   };
