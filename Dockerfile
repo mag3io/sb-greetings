@@ -1,10 +1,10 @@
 FROM mag3io/node
 
-RUN mkdir src
-WORKDIR src
-COPY src .
+COPY package.json .
+COPY node_modules .
+COPY app .
 
-RUN npm install
+RUN npm prune --production
 
 EXPOSE 3000
 
