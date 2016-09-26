@@ -3,7 +3,6 @@
         "**/node_modules/**",
         "**/test/**",
         "**/*.test.js",
-        "server/src/index.js"
-    ],
-    "packageJsonLocation": "server/src/package.json"
+        "/index.js"
+    ]
 }
