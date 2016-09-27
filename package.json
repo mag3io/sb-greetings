@@ -23,9 +23,8 @@
     "stop:dev": "node app/index.js stop | bunyan -o short",
     "pretest": "rm -rf ./coverage",
     "test": "LOG_LEVEL=ERROR istanbul cover _mocha -- -r test/unit/index.js app/**/*.test.js",
-    "posttest": "node scripts/posttest.js",
     "test:e2e": "LOG_LEVEL=ERROR mocha --delay -r test/e2e/index.js test/e2e/*.spec.js",
-    "test_exporting_coverage": "rm -rf ./coverage && istanbul cover --report lcovonly _mocha -- -r test/unit/index.js app/**/*.test.js && cat ./coverage/lcov.info | coveralls"
+    "test:export-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.9.0",
