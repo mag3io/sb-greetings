@@ -5,7 +5,7 @@ node_js:
 services:
 - docker
 script:
-  - npm install && npm run-script test_exporting_coverage
+  - npm install && npm test && npm run test:export-coverage
   - docker build -t mag3io/sb-greetings .
 after_success:
 - if [ "$TRAVIS_BRANCH" == "master" ]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
