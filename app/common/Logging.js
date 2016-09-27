@@ -1,3 +1,5 @@
+'use strict';
+
 const logLevel = require('./ProcessEnv').safeGet('LOG_LEVEL', 'DEBUG');
 
 const logSettings = { name: 'GreetingsApp', level: logLevel },

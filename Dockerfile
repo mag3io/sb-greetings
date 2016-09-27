@@ -8,4 +8,4 @@ RUN npm prune --production
 
 EXPOSE 3000
 
-CMD ["app/index.js"]
+CMD ["app/index.js start"]
