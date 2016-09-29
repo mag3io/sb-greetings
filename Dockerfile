@@ -1,11 +1,13 @@
 FROM mag3io/node
 
 COPY package.json .
-COPY node_modules .
-COPY app .
 
+RUN mkdir node_modules
+COPY node_modules node_modules
 RUN npm prune --production
+
+COPY app .
 
 EXPOSE 3000
 
-CMD ["app/index.js start"]
+CMD ["index.js", "start"]
