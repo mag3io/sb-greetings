@@ -1,0 +1,20 @@
+version: "2.0"
+
+#### Services ####
+services:
+  sb-greetings:
+    image: mag3io/sb-greetings
+    logging:
+      driver: fluentd
+      options:
+        fluentd-tag: docker.{{.FullID}}
+    ports:
+      - '3000:3000'
+    networks:
+      - logging
+
+### Networks ###
+networks:
+  logging:
+    external:
+      name: logging
