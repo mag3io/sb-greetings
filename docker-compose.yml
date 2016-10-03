@@ -7,14 +7,14 @@ services:
     logging:
       driver: fluentd
       options:
-        fluentd-address: localhost:24224
+ #       fluentd-address: localhost:24224
         fluentd-tag: docker.{{.FullID}}
     ports:
       - '3000:3000'
     networks:
       - logging
-    external_links:
-      - efk_fluentd_1:fluentd
+#    external_links:
+#      - efk_fluentd_1:fluentd
 
 ### Networks ###
 networks:
