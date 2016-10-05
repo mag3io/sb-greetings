@@ -24,6 +24,7 @@ if (program.stop) {
 if (program.start) {
   // -- Create the application
   const app = require('express')(),
+    router = require('express').Router(),
     port = env.app_port || 3000;
 
   // -- Configure the log
@@ -34,7 +35,7 @@ if (program.start) {
 
   // -- Configure the endpoints
   const greetingsController = require('./greetings/GreetingsController.js');
-  app.use('/greetings', greetingsController);
+  app.use('/greetings', greetingsController.routes(router));
 
   // -- Configure error logging has to be put after routing.
   app.use(logging.errorLogger);
