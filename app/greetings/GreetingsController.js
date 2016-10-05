@@ -6,22 +6,18 @@ const greetings = require('./GreetingsService'),
 const getHello = (req, res) => {
   log().info('Getting "/Hello"');
   res.type('application/json');
-  // res.send({
-  //   messages: greetings.sayHello(req.query.name),
-  //   when: new Date()
-  // });
-  res.end(JSON.stringify({
+  res.send({
     messages: greetings.sayHello(req.query.name),
     when: new Date()
-  }, null, 2));
+  });
 };
 
 const getBye = (req, res) => {
   res.type('application/json');
-  res.end(JSON.stringify({
+  res.send({
     messages: greetings.sayBye(req.query.name),
     when: new Date()
-  }, null, 2));
+  });
 };
 
 const routes = (router) => {

@@ -12,14 +12,14 @@ const test = (sutMethod, stubbing, message, name) => {
     req.query = {};
     if (name) req.query.name = name;
     res.type = sinon.spy();
-    res.end = sinon.spy();
+    res.send = sinon.spy();
 
     stubbing(serviceStub);
-    sut[sutMethod](req,res);
+    sut[sutMethod](req, res);
 
     assert.equal(res.type.withArgs('application/json').calledOnce, true);
-    assert.equal(res.end.calledOnce, true);
-    assert.equal(JSON.parse(res.end.args[0][0]).messages, message);
+    assert.equal(res.send.calledOnce, true);
+    assert.equal(res.send.args[0][0].messages, message);
     
 };
 
