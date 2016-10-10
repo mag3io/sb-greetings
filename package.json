@@ -18,7 +18,7 @@
   "scripts": {
     "lint": "eslint .; exit 0",
     "start": "node app/index.js start",
-    "start:dev": "LOG_LEVEL=DEBUG nodemon index.js app/start | bunyan -o short",
+    "start:dev": "LOG_LEVEL=DEBUG nodemon app/index.js start | bunyan -o short",
     "stop": "node app/index.js stop",
     "stop:dev": "node app/index.js stop | bunyan -o short",
     "pretest": "rm -rf ./coverage",
@@ -36,6 +36,8 @@
     "eslint-plugin-promise": "^2.0.1",
     "eslint-plugin-standard": "^2.0.0",
     "istanbul": "^0.4.5",
-    "mocha": "^3.0.2"
+    "mocha": "^3.0.2",
+    "proxyquire": "^1.7.10",
+    "sinon": "^1.17.6"
   }
 }
