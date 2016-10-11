@@ -1,56 +1,61 @@
 'use strict';
 
-const sinon = require('sinon'),
+const 
+    test = require('tape'),
+    sinon = require('sinon'),
     proxyquire = require('proxyquire'),
     serviceStub = {};
 
 const sut = proxyquire('./GreetingsController', {'./GreetingsService' : serviceStub});
 
-const test = (sutMethod, stubbing, message, name) => {
+const performTest = (assert) => {
+    assert.plan(3)
+    return (sutMethod, stubbing, message, name) => {
 
-    const req = {}, res = {};
-    req.query = {};
-    if (name) req.query.name = name;
-    res.type = sinon.spy();
-    res.send = sinon.spy();
+        const req = {}, res = {};
+        req.query = {};
+        if (name) req.query.name = name;
+        res.type = sinon.spy();
+        res.send = sinon.spy();
 
-    stubbing(serviceStub);
-    sut[sutMethod](req, res);
+        stubbing(serviceStub);
+        sut[sutMethod](req, res);
 
-    assert.equal(res.type.withArgs('application/json').calledOnce, true);
-    assert.equal(res.send.calledOnce, true);
-    assert.equal(res.send.args[0][0].messages, message);
-    
-};
+        assert.equal(true, res.send.calledOnce);
+        assert.equal(true, res.type.withArgs('application/json').calledOnce, 
+            'The expected response body type is "application/json"');
+        assert.equal(message, res.send.args[0][0].messages, 
+            'The expected repsonse body is: ' + message);
+}};
 
-describe('GreetingsController', function () {
-    
-    describe('GET hello', function () {
-        it('should return "Hello World" if the parameter name is "undefined"', function () {
-            test('getHello', 
-                (serviceStub) => {serviceStub.sayHello = sinon.stub().returns('Hello World');}, 
-                'Hello World');
-        });     
-        it('should return "Hello Richard" if the parameter name is "Richard"', function () {
-             test('getHello', 
-                (serviceStub) => {serviceStub.sayHello = sinon.stub().returns('Hello Richard');}, 
-                'Hello Richard', 
-                'Richard');
-        });
-    });
+test('GreetingsController GET hello', function(assert) {
+    performTest(assert)(
+        'getHello', 
+        (serviceStub) => {serviceStub.sayHello = sinon.stub().returns('Hello World');}, 
+        'Hello World');
+});
 
-    describe('GET bye', function () {
-        it('should return "Bye World" if the parameter name is "undefined"', function () {
-            test('getBye', 
-                (serviceStub) => {serviceStub.sayHello = sinon.stub().returns('Hello World');}, 
-                'Bye World');
-        });
-        it('should return "Bye Richard" if the parameter name is "Richard"', function () {
-            test('getBye', 
-                (serviceStub) => {serviceStub.sayHello = sinon.stub().returns('Hello World');}, 
-                'Bye Richard', 
-                'Richard');
-        });
-    });
+test('GreetingsController GET hello?name=Richard', function(assert) {
+    performTest(assert)(
+        'getHello', 
+        (serviceStub) => {serviceStub.sayHello = sinon.stub().returns('Hello Richard');}, 
+        'Hello Richard',
+        'Richard');
+});
 
+test('GreetingsController GET bye', function(assert) {
+    performTest(assert)(
+        'getBye', 
+        (serviceStub) => {serviceStub.sayBye = sinon.stub().returns('Bye World');}, 
+        'Bye World');
+    assert.end();
+});
+
+test('GreetingsController GET bye?name=Richard', function(assert) {
+    performTest(assert)(
+        'getBye', 
+        (serviceStub) => {serviceStub.sayBye = sinon.stub().returns('Bye Richard');}, 
+        'Bye Richard',
+        'Richard');
+    assert.end();
 });

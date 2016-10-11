@@ -22,7 +22,7 @@
     "stop": "node app/index.js stop",
     "stop:dev": "node app/index.js stop | bunyan -o short",
     "pretest": "rm -rf ./coverage",
-    "test": "LOG_LEVEL=ERROR istanbul cover _mocha -- -r test/unit/index.js app/**/*.test.js",
+    "test": "LOG_LEVEL=ERROR istanbul cover tape -- app/**/*.test.js | faucet",
     "test:e2e": "LOG_LEVEL=ERROR mocha --delay -r test/e2e/index.js test/e2e/*.spec.js",
     "test:export-coverage": "cat ./coverage/lcov.info | coveralls"
   },
@@ -35,9 +35,11 @@
     "eslint-config-standard": "^6.0.0",
     "eslint-plugin-promise": "^2.0.1",
     "eslint-plugin-standard": "^2.0.0",
+    "faucet": "0.0.1",
     "istanbul": "^0.4.5",
     "mocha": "^3.0.2",
     "proxyquire": "^1.7.10",
-    "sinon": "^1.17.6"
+    "sinon": "^1.17.6",
+    "tape": "^4.6.2"
   }
 }
