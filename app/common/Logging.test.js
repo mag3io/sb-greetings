@@ -2,8 +2,9 @@
 
 const sut = require('./Logging');
 
-describe('Logging', function () {    
-    it('should export 5 logger and 1 middleware.', function () {
-        assert.equal(sut.log !== undefined, true)
-    });
+const test = require('tape');
+
+test('Logging should export 5 logger and 1 middleware.', function(assert) {
+    assert.equal(true, sut.log !== undefined);
+    assert.end();
 });

@@ -1,29 +1,25 @@
 'use strict';
 
+const test = require('tape');
+
 const sut = require('./GreetingsService');
 
-describe('GreetingsService', function () {
-    
-    describe('#sayHello()', function () {
-        it('should return "Hello World" if the parameter name is "undefined"', function () {
-            var name;
-            assert.equal('Hello World', sut.sayHello(name));
-        });
-        it('should return "Hello Richard" if the parameter name is "Richard"', function () {
-            var name = 'Richard';
-            assert.equal('Hello Richard', sut.sayHello(name));
-        });
-    });
+test('GreetingsService#sayHello() should return "Hello World" if the parameter name is "undefined"', function(assert) {
+  assert.equal(sut.sayHello(), 'Hello World');
+  assert.end();
+});
 
-    describe('#sayBye()', function () {
-        it('should return "Bye World" if the parameter name is "undefined"', function () {
-            var name;
-            assert.equal('Bye World', sut.sayBye(name));
-        });
-        it('should return "Bye Richard" if the parameter name is "Richard"', function () {
-            var name = 'Richard';
-            assert.equal('Bye Richard', sut.sayBye(name));
-        });
-    });
+test('GreetingsService#sayHello() should return "Hello Richard" if the parameter name is "Richard"', function(assert) {
+  assert.equal(sut.sayHello('Richard'), 'Hello Richard');
+  assert.end();
+});
 
+test('GreetingsService#sayBye() should return "Bye World" if the parameter name is "undefined"', function(assert) {
+  assert.equal(sut.sayBye(), 'Bye World');
+  assert.end();
+});
+
+test('GreetingsService#sayBye() should return "Bye Richard" if the parameter name is "Richard"', function(assert) {
+  assert.equal(sut.sayBye('Richard'), 'Bye Richard');
+  assert.end();
 });

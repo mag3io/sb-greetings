@@ -24,10 +24,10 @@ const routes = (router) => {
   router.get('/hello', getHello);
   router.get('/bye', getBye);
   return router;
-}
+};
 
 module.exports = {
   routes: routes,
   getHello: getHello,
   getBye: getBye
-}
+};
